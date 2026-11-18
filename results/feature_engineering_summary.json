@@ -1,0 +1,658 @@
+{
+  "train": {
+    "partition": "train",
+    "n_trips": 80,
+    "n_observations": 208417,
+    "top_k": 10,
+    "n_features": 28,
+    "overall_candidate_miss_rate": 0.07245,
+    "naive_nearest_arc_top1_acc": 0.50145,
+    "elapsed_sec": 58.58,
+    "cache_file": "/mnt/storage/Projects/PESU/ML/Hackathon/PathSnap/artifacts/cache/features_train.npz",
+    "per_trip": [
+      {
+        "partition": "train",
+        "trip_id": "00000001",
+        "n_obs": 1315,
+        "cand_miss_rate": 0.00152,
+        "dist_only_top1_acc": 0.7962
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000002",
+        "n_obs": 7243,
+        "cand_miss_rate": 0.08795,
+        "dist_only_top1_acc": 0.37112
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000003",
+        "n_obs": 821,
+        "cand_miss_rate": 0.00609,
+        "dist_only_top1_acc": 0.73447
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000004",
+        "n_obs": 1064,
+        "cand_miss_rate": 0.00564,
+        "dist_only_top1_acc": 0.42857
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000005",
+        "n_obs": 1045,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.96172
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000006",
+        "n_obs": 1450,
+        "cand_miss_rate": 0.00069,
+        "dist_only_top1_acc": 0.49172
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000008",
+        "n_obs": 3093,
+        "cand_miss_rate": 0.01196,
+        "dist_only_top1_acc": 0.34659
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000010",
+        "n_obs": 2711,
+        "cand_miss_rate": 0.00812,
+        "dist_only_top1_acc": 0.58797
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000011",
+        "n_obs": 2828,
+        "cand_miss_rate": 0.00035,
+        "dist_only_top1_acc": 0.48303
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000012",
+        "n_obs": 1608,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.47264
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000013",
+        "n_obs": 2580,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.81318
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000014",
+        "n_obs": 448,
+        "cand_miss_rate": 0.00446,
+        "dist_only_top1_acc": 0.67857
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000016",
+        "n_obs": 1305,
+        "cand_miss_rate": 0.0092,
+        "dist_only_top1_acc": 0.40383
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000018",
+        "n_obs": 379,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.5409
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000019",
+        "n_obs": 2354,
+        "cand_miss_rate": 0.01742,
+        "dist_only_top1_acc": 0.51232
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000020",
+        "n_obs": 2353,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.60476
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000021",
+        "n_obs": 15783,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.50966
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000022",
+        "n_obs": 474,
+        "cand_miss_rate": 0.00633,
+        "dist_only_top1_acc": 0.42827
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000024",
+        "n_obs": 801,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.87266
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000025",
+        "n_obs": 1179,
+        "cand_miss_rate": 0.00085,
+        "dist_only_top1_acc": 0.77778
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000026",
+        "n_obs": 361,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.44875
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000027",
+        "n_obs": 694,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.49712
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000028",
+        "n_obs": 3565,
+        "cand_miss_rate": 0.00449,
+        "dist_only_top1_acc": 0.5338
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000029",
+        "n_obs": 733,
+        "cand_miss_rate": 0.00136,
+        "dist_only_top1_acc": 0.70259
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000031",
+        "n_obs": 4245,
+        "cand_miss_rate": 0.00047,
+        "dist_only_top1_acc": 0.62992
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000032",
+        "n_obs": 2464,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.66558
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000033",
+        "n_obs": 5844,
+        "cand_miss_rate": 0.65845,
+        "dist_only_top1_acc": 0.19422
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000034",
+        "n_obs": 3614,
+        "cand_miss_rate": 0.00028,
+        "dist_only_top1_acc": 0.58356
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000035",
+        "n_obs": 1643,
+        "cand_miss_rate": 0.00122,
+        "dist_only_top1_acc": 0.63299
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000036",
+        "n_obs": 1368,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.49269
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000037",
+        "n_obs": 677,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.44165
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000038",
+        "n_obs": 1287,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.69308
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000039",
+        "n_obs": 363,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.41873
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000041",
+        "n_obs": 1019,
+        "cand_miss_rate": 0.00098,
+        "dist_only_top1_acc": 0.61923
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000042",
+        "n_obs": 7739,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.48353
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000043",
+        "n_obs": 2322,
+        "cand_miss_rate": 0.03833,
+        "dist_only_top1_acc": 0.5112
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000044",
+        "n_obs": 546,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.5696
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000045",
+        "n_obs": 640,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.39062
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000046",
+        "n_obs": 1401,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.51963
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000047",
+        "n_obs": 1272,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.43711
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000048",
+        "n_obs": 1240,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.46774
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000050",
+        "n_obs": 518,
+        "cand_miss_rate": 0.00193,
+        "dist_only_top1_acc": 0.43243
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000051",
+        "n_obs": 984,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.6311
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000053",
+        "n_obs": 1304,
+        "cand_miss_rate": 0.0069,
+        "dist_only_top1_acc": 0.62347
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000054",
+        "n_obs": 19313,
+        "cand_miss_rate": 0.51416,
+        "dist_only_top1_acc": 0.06892
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000055",
+        "n_obs": 2472,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.87581
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000057",
+        "n_obs": 1645,
+        "cand_miss_rate": 0.00061,
+        "dist_only_top1_acc": 0.41641
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000058",
+        "n_obs": 599,
+        "cand_miss_rate": 0.02504,
+        "dist_only_top1_acc": 0.51419
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000060",
+        "n_obs": 854,
+        "cand_miss_rate": 0.00468,
+        "dist_only_top1_acc": 0.45433
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000061",
+        "n_obs": 1430,
+        "cand_miss_rate": 0.08182,
+        "dist_only_top1_acc": 0.4035
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000062",
+        "n_obs": 3378,
+        "cand_miss_rate": 0.00059,
+        "dist_only_top1_acc": 0.52191
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000063",
+        "n_obs": 2781,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.52463
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000064",
+        "n_obs": 2093,
+        "cand_miss_rate": 0.00096,
+        "dist_only_top1_acc": 0.56235
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000066",
+        "n_obs": 4325,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.46613
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000068",
+        "n_obs": 747,
+        "cand_miss_rate": 0.00134,
+        "dist_only_top1_acc": 0.46319
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000069",
+        "n_obs": 2067,
+        "cand_miss_rate": 0.0029,
+        "dist_only_top1_acc": 0.47557
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000070",
+        "n_obs": 2076,
+        "cand_miss_rate": 0.00289,
+        "dist_only_top1_acc": 0.42437
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000071",
+        "n_obs": 850,
+        "cand_miss_rate": 0.00118,
+        "dist_only_top1_acc": 0.68706
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000072",
+        "n_obs": 969,
+        "cand_miss_rate": 0.13932,
+        "dist_only_top1_acc": 0.53044
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000074",
+        "n_obs": 1929,
+        "cand_miss_rate": 0.00104,
+        "dist_only_top1_acc": 0.75894
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000075",
+        "n_obs": 1628,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.51413
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000078",
+        "n_obs": 2909,
+        "cand_miss_rate": 0.00069,
+        "dist_only_top1_acc": 0.45273
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000079",
+        "n_obs": 689,
+        "cand_miss_rate": 0.00145,
+        "dist_only_top1_acc": 0.77068
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000080",
+        "n_obs": 2510,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.72231
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000081",
+        "n_obs": 3224,
+        "cand_miss_rate": 0.00031,
+        "dist_only_top1_acc": 0.72612
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000082",
+        "n_obs": 4268,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.77882
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000083",
+        "n_obs": 1507,
+        "cand_miss_rate": 0.00066,
+        "dist_only_top1_acc": 0.70471
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000084",
+        "n_obs": 16031,
+        "cand_miss_rate": 0.00274,
+        "dist_only_top1_acc": 0.47945
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000085",
+        "n_obs": 1092,
+        "cand_miss_rate": 0.00183,
+        "dist_only_top1_acc": 0.52839
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000086",
+        "n_obs": 4143,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.80473
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000088",
+        "n_obs": 876,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.68721
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000089",
+        "n_obs": 1228,
+        "cand_miss_rate": 0.02036,
+        "dist_only_top1_acc": 0.40717
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000090",
+        "n_obs": 536,
+        "cand_miss_rate": 0.0056,
+        "dist_only_top1_acc": 0.51866
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000092",
+        "n_obs": 7892,
+        "cand_miss_rate": 0.00038,
+        "dist_only_top1_acc": 0.51102
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000093",
+        "n_obs": 1211,
+        "cand_miss_rate": 0.04046,
+        "dist_only_top1_acc": 0.52684
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000095",
+        "n_obs": 1551,
+        "cand_miss_rate": 0.00129,
+        "dist_only_top1_acc": 0.47905
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000096",
+        "n_obs": 3271,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.80404
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000097",
+        "n_obs": 1740,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.52529
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000098",
+        "n_obs": 5584,
+        "cand_miss_rate": 0.00036,
+        "dist_only_top1_acc": 0.63378
+      },
+      {
+        "partition": "train",
+        "trip_id": "00000099",
+        "n_obs": 2322,
+        "cand_miss_rate": 0.00129,
+        "dist_only_top1_acc": 0.45564
+      }
+    ]
+  },
+  "student_test": {
+    "partition": "student_test",
+    "n_trips": 10,
+    "n_observations": 19160,
+    "top_k": 10,
+    "n_features": 28,
+    "overall_candidate_miss_rate": 0.00172,
+    "naive_nearest_arc_top1_acc": 0.54713,
+    "elapsed_sec": 4.25,
+    "cache_file": "/mnt/storage/Projects/PESU/ML/Hackathon/PathSnap/artifacts/cache/features_student_test.npz",
+    "per_trip": [
+      {
+        "partition": "student_test",
+        "trip_id": "00000000",
+        "n_obs": 2503,
+        "cand_miss_rate": 0.0012,
+        "dist_only_top1_acc": 0.55773
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000007",
+        "n_obs": 1354,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.45421
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000009",
+        "n_obs": 1049,
+        "cand_miss_rate": 0.00953,
+        "dist_only_top1_acc": 0.44614
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000040",
+        "n_obs": 2995,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.57596
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000052",
+        "n_obs": 262,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.79771
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000056",
+        "n_obs": 3958,
+        "cand_miss_rate": 0.00253,
+        "dist_only_top1_acc": 0.67559
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000065",
+        "n_obs": 768,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.67448
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000076",
+        "n_obs": 1486,
+        "cand_miss_rate": 0.00404,
+        "dist_only_top1_acc": 0.42194
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000077",
+        "n_obs": 3911,
+        "cand_miss_rate": 0.00102,
+        "dist_only_top1_acc": 0.43135
+      },
+      {
+        "partition": "student_test",
+        "trip_id": "00000091",
+        "n_obs": 874,
+        "cand_miss_rate": 0.0,
+        "dist_only_top1_acc": 0.64531
+      }
+    ]
+  }
+}

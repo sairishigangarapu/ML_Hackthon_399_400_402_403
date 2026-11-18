@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PathSnap — Evaluator UI | Model 4 (NN-GLS + RLCD)</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-badge">M4</div>
+      <div>
+        <h1>PathSnap Distributed Map-Matching</h1>
+        <p class="subtitle">Model 4: NN-GLS (Vecchia NNGP) + RLCD (Calibrated Decisions) &middot; OpenStreetMap Free Tier</p>
+      </div>
+    </div>
+
+    <div class="api-bar">
+      <label for="apiUrlInput" class="sr-only">Laptop 1 FastAPI Base URL</label>
+      <input
+        id="apiUrlInput"
+        type="url"
+        value="http://localhost:8000"
+        placeholder="http://<LAPTOP_1_IP>:8000"
+        aria-label="Laptop 1 FastAPI Base URL"
+      />
+      <button id="connectBtn" type="button" class="btn-primary">Connect API</button>
+      <span id="healthBadge" class="status-pill status-idle" aria-live="polite">Disconnected</span>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- Left Sidebar: 10 Evaluation Trips -->
+    <aside class="sidebar" aria-label="Evaluation Trips">
+      <div class="sidebar-header">
+        <h2>Evaluation Trips</h2>
+        <span id="tripCountBadge" class="count-pill">0 trips</span>
+      </div>
+      <p class="sidebar-hint">
+        Select any reserved trip below to dispatch a live inference request to Laptop 1's FastAPI backend.
+        Ground-truth labels stay strictly server-side.
+      </p>
+      <div id="tripList" class="trip-list" role="list">
+        <div class="empty-state">Click <strong>Connect API</strong> to load the 10 evaluation trips.</div>
+      </div>
+
+      <section class="audit-box" aria-label="Live Request Audit">
+        <div class="audit-header">
+          <h3>API Request Log</h3>
+          <span class="gt-lock">GT: Server-Side Only</span>
+        </div>
+        <div id="auditLog" class="audit-log">
+          <div class="log-entry muted">Waiting for Laptop 1 API connection...</div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Right Main Panel: Interactive OpenStreetMap + Server-Side Metrics -->
+    <section class="main-panel">
+      <!-- KPI Metrics Ribbon -->
+      <div class="kpi-grid" aria-label="Evaluation Metrics">
+        <div class="kpi-card">
+          <span class="kpi-label">Obs Top-1 Accuracy</span>
+          <span id="kpiTop1" class="kpi-value">--</span>
+          <span id="kpiHitAcc" class="kpi-sub">Hit-cond: --</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Macro F1-Score</span>
+          <span id="kpiF1" class="kpi-value">--</span>
+          <span id="kpiPrecRec" class="kpi-sub">P: -- / R: --</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Route Continuity</span>
+          <span id="kpiCont" class="kpi-value">--</span>
+          <span id="kpiCont1Hop" class="kpi-sub">1-hop: --</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Seq Arc F1</span>
+          <span id="kpiSeqF1" class="kpi-value">--</span>
+          <span id="kpiArcCount" class="kpi-sub">Pred arcs: --</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">RLCD Calibration (ECE)</span>
+          <span id="kpiEce" class="kpi-value">--</span>
+          <span id="kpiBrierLL" class="kpi-sub">Brier: -- | LL: --</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">API Latency</span>
+          <span id="kpiLatency" class="kpi-value">--</span>
+          <span id="kpiLatencySub" class="kpi-sub">Miss rate: --</span>
+        </div>
+      </div>
+
+      <!-- Map Controls + Leaflet OpenStreetMap Canvas -->
+      <div class="map-shell">
+        <div class="map-toolbar">
+          <div class="map-title-group">
+            <strong id="activeTripTitle">No trip selected</strong>
+            <span id="activeTripMeta" class="meta-chip">Select a trip on the left</span>
+          </div>
+          <div class="map-toggles">
+            <label class="toggle-chip"><input type="checkbox" id="toggleGps" checked /> Raw GPS</label>
+            <label class="toggle-chip"><input type="checkbox" id="togglePred" checked /> Predicted Route</label>
+            <label class="toggle-chip"><input type="checkbox" id="toggleRoad" checked /> Road Network</label>
+            <label class="toggle-chip"><input type="checkbox" id="toggleConfColor" checked /> Color GPS by RLCD Confidence</label>
+          </div>
+        </div>
+
+        <div id="map" class="map-canvas" role="region" aria-label="Interactive OpenStreetMap Route Viewer"></div>
+
+        <div class="map-footer">
+          <div class="legend-items">
+            <span><i class="dot dot-high"></i> GPS (High RLCD Conf &ge; 0.85)</span>
+            <span><i class="dot dot-mid"></i> GPS (Moderate Conf 0.55–0.85)</span>
+            <span><i class="dot dot-low"></i> GPS (Uncertain &lt; 0.55)</span>
+            <span><i class="line line-pred"></i> Model 4 Predicted Route</span>
+            <span><i class="line line-road"></i> Road Network Context</span>
+          </div>
+          <a id="osmExternalLink" href="https://www.openstreetmap.org" target="_blank" rel="noopener noreferrer" class="osm-link">
+            Open Region on OpenStreetMap &nearr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="app.js"></script>
+</body>
+</html>
