@@ -1,0 +1,30 @@
+{
+  "feature_names": [
+    "dist_m",
+    "rank",
+    "dist_gap_m",
+    "dist_ratio",
+    "log_arc_len",
+    "proj_frac",
+    "log_dist_to_arc_end",
+    "is_zero_len",
+    "cos_h3",
+    "sin_h3",
+    "defined_h3",
+    "cos_h10",
+    "sin_h10",
+    "defined_h10",
+    "has_twin",
+    "cos_h3_x_twin",
+    "cos_h10_x_twin",
+    "speed_3s_mps"
+  ],
+  "K": 16,
+  "projection": "per-trip AEQD (pyproj), metres",
+  "candidate_sample_step_m": 20.0,
+  "gap_seconds": 5.0,
+  "probability_column": "P(candidate is reference arc)",
+  "model": "StandardScaler + LogisticRegression(L2, lbfgs)",
+  "C": 1.0,
+  "seed": 42
+}
