@@ -1,0 +1,49 @@
+{
+  "project": "PathSnap: Distributed Map-Matching & Route Reconstruction",
+  "version": "1.0.0",
+  "created_at": "2026-11-18T10:06:00+05:30",
+  "updated_at": "2026-11-18T10:06:00+05:30",
+  "random_seed": 42,
+  "paths": {
+    "project_root": "/mnt/storage/Projects/PESU/ML/Hackathon/PathSnap",
+    "venv": "/mnt/storage/Projects/PESU/ML/Hackathon/PathSnap/.venv",
+    "raw_train_dir": "/mnt/storage/Projects/PESU/ML/Hackathon/Student folder/train",
+    "raw_student_test_dir": "/mnt/storage/Projects/PESU/ML/Hackathon/Student folder/student_test"
+  },
+  "data_leakage_policy": {
+    "train_trips": 80,
+    "student_test_trips": 10,
+    "evaluator_test_trips": 10,
+    "cv_strategy": "GroupKFold(n_splits=5) grouped by trip_id on 80 train trips only",
+    "scaler_fit_on": "train partition only (fold-internal during CV)",
+    "hpo_fit_on": "80 train trips CV only",
+    "hmm_tuning_on": "80 train trips CV only",
+    "evaluator_ground_truth_in_ui": false
+  },
+  "models_planned": [
+    "M01_LogisticRegression",
+    "M02_RandomForest",
+    "M03_LightGBM_Untuned",
+    "M04_MLP_BCE",
+    "M05_Model1_BayesianOpt_LightGBM_HMM",
+    "M06_Model2_RLCD",
+    "M07_Model3_NN_GLS",
+    "M08_Model4_NN_GLS_RLCD"
+  ],
+  "stages": {
+    "00_env_setup": {"status": "in_progress", "artifacts": []},
+    "01_data_processing_eda": {"status": "pending", "artifacts": []},
+    "02_feature_engineering": {"status": "pending", "artifacts": []},
+    "03_base_model_training": {"status": "pending", "artifacts": []},
+    "04_bayesian_hpo": {"status": "pending", "artifacts": []},
+    "05_nn_gls_and_rlcd_training": {"status": "pending", "artifacts": []},
+    "06_hmm_viterbi_decoding": {"status": "pending", "artifacts": []},
+    "07_evaluation_and_plots": {"status": "pending", "artifacts": []},
+    "08_folium_visualisations": {"status": "pending", "artifacts": []},
+    "09_fastapi_backend_and_ui": {"status": "pending", "artifacts": []},
+    "10_deployment_and_e2e_test": {"status": "pending", "artifacts": []},
+    "11_technical_report_pdf": {"status": "pending", "artifacts": []},
+    "12_theory_and_viva_prep": {"status": "pending", "artifacts": []}
+  },
+  "metrics_summary": {}
+}

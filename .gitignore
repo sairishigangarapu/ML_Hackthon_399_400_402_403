@@ -1,0 +1,33 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Environment & local secrets
+.env
+.env.local
+*.pem
+*.key
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large intermediate numpy/parquet feature caches (reproducible from 02_feature_engineering)
+*.npz
+*.parquet
+artifacts/cache/
+
+# Raw dataset folders if placed locally
+Student folder/
+evaluator_test/
