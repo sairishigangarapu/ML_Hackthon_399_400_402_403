@@ -1,0 +1,3 @@
+Model,Algorithm Family,Key Configuration,CV Macro F1-score,Top-1 Accuracy,Route Continuity,Student-Test Macro F1-score,Log Loss,Brier Score,ECE,Seq Arc F1,Inference Time (ms/trip)
+Stage 1: NN-GLS (Pre-RLCD Checkpoint),Geostatistical Graph NN (Vecchia NNGP GLS),"H=128, L=2, m=5, rho_s=45.0m, tau2=0.15",0.9207 ± 0.0524,0.91754,0.99301,0.95443,0.23412,0.11663,0.02269,0.91795,40.18
+Model 4: NN-GLS + RLCD (Final),Geostatistical GNN (NN-GLS) + Calibrated RL (RLCD),"Stage1 NN-GLS + GRPO(G=8) Brier+Cont+SoftECE+KL(0.15), T=0.96275",0.9204 ± 0.0528,0.91498,0.99237,0.953,0.26035,0.12297,0.03509,0.9215,39.33

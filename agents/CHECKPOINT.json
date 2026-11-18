@@ -1,9 +1,11 @@
 {
-  "project": "PathSnap: Distributed Map-Matching & Route Reconstruction",
+  "project": "PathSnap: Distributed Map-Matching & Route Reconstruction — Model 4 (NN-GLS + RLCD)",
   "version": "1.0.0",
+  "git_branch": "M4",
   "created_at": "2026-11-18T10:06:00+05:30",
-  "updated_at": "2026-11-18T10:06:00+05:30",
+  "updated_at": "2026-11-18T11:15:00+05:30",
   "random_seed": 42,
+  "scope": "Model 4: Pure NN-GLS + RLCD (zero HMM/Viterbi or Bayesian HPO; Team 399_400_402_403 Member 4)",
   "paths": {
     "project_root": "/mnt/storage/Projects/PESU/ML/Hackathon/PathSnap",
     "venv": "/mnt/storage/Projects/PESU/ML/Hackathon/PathSnap/.venv",
@@ -16,34 +18,123 @@
     "evaluator_test_trips": 10,
     "cv_strategy": "GroupKFold(n_splits=5) grouped by trip_id on 80 train trips only",
     "scaler_fit_on": "train partition only (fold-internal during CV)",
-    "hpo_fit_on": "80 train trips CV only",
-    "hmm_tuning_on": "80 train trips CV only",
     "evaluator_ground_truth_in_ui": false
   },
-  "models_planned": [
-    "M01_LogisticRegression",
-    "M02_RandomForest",
-    "M03_LightGBM_Untuned",
-    "M04_MLP_BCE",
-    "M05_Model1_BayesianOpt_LightGBM_HMM",
-    "M06_Model2_RLCD",
-    "M07_Model3_NN_GLS",
-    "M08_Model4_NN_GLS_RLCD"
-  ],
   "stages": {
-    "00_env_setup": {"status": "in_progress", "artifacts": []},
-    "01_data_processing_eda": {"status": "pending", "artifacts": []},
-    "02_feature_engineering": {"status": "pending", "artifacts": []},
-    "03_base_model_training": {"status": "pending", "artifacts": []},
-    "04_bayesian_hpo": {"status": "pending", "artifacts": []},
-    "05_nn_gls_and_rlcd_training": {"status": "pending", "artifacts": []},
-    "06_hmm_viterbi_decoding": {"status": "pending", "artifacts": []},
-    "07_evaluation_and_plots": {"status": "pending", "artifacts": []},
-    "08_folium_visualisations": {"status": "pending", "artifacts": []},
-    "09_fastapi_backend_and_ui": {"status": "pending", "artifacts": []},
-    "10_deployment_and_e2e_test": {"status": "pending", "artifacts": []},
-    "11_technical_report_pdf": {"status": "pending", "artifacts": []},
-    "12_theory_and_viva_prep": {"status": "pending", "artifacts": []}
+    "00_env_setup": {"status": "completed", "artifacts": ["requirements.txt", ".venv"]},
+    "01_data_processing_eda": {
+      "status": "completed",
+      "artifacts": [
+        "01_data_processing/config.py",
+        "01_data_processing/io_utils.py",
+        "01_data_processing/run_eda.py",
+        "results/eda_trip_inventory.csv",
+        "results/eda_summary.json",
+        "07_visualisations/plots/eda_gps_noise_and_gaps.png",
+        "07_visualisations/plots/eda_road_network_connectivity.png",
+        "07_visualisations/plots/eda_trajectory_patterns.png",
+        "07_visualisations/maps/eda_map_train_00000001.html",
+        "07_visualisations/maps/eda_map_train_00000054_high_noise.html",
+        "07_visualisations/maps/eda_map_student_test_00000000.html"
+      ]
+    },
+    "02_feature_engineering": {
+      "status": "completed",
+      "artifacts": [
+        "02_feature_engineering/candidate_generator.py",
+        "02_feature_engineering/route_aligner.py",
+        "02_feature_engineering/feature_extractor.py",
+        "artifacts/feature_schema.json",
+        "results/feature_engineering_summary.json"
+      ]
+    },
+    "03_model4_nngls_rlcd_training": {
+      "status": "completed",
+      "artifacts": [
+        "03_model_training/nngls_core.py",
+        "03_model_training/rlcd_core.py",
+        "03_model_training/train_utils.py",
+        "03_model_training/train_model4_nngls_rlcd.py",
+        "artifacts/model4_nngls_rlcd.pt",
+        "artifacts/scaler_model4_nngls_rlcd.json",
+        "artifacts/model4_nngls_rlcd_config.json",
+        "results/model4_nngls_rlcd_summary.json",
+        "results/model4_cv_folds.csv",
+        "results/model4_student_test_per_trip.csv",
+        "results/model4_results_table.csv",
+        "results/model4_training_histories.json"
+      ]
+    },
+    "06_evaluation_and_plots": {
+      "status": "completed",
+      "artifacts": [
+        "06_model_evaluation/metrics.py",
+        "06_model_evaluation/generate_eval_plots.py",
+        "07_visualisations/plots/model4_training_curves.png",
+        "07_visualisations/plots/model4_calibration_and_stage_lift.png",
+        "07_visualisations/plots/model4_confusion_matrix.png",
+        "07_visualisations/plots/model4_cv_and_per_trip.png",
+        "07_visualisations/plots/model4_feature_saliency.png"
+      ]
+    },
+    "07_folium_visualisations": {
+      "status": "completed",
+      "artifacts": [
+        "07_visualisations/generate_folium_maps.py",
+        "07_visualisations/maps/model4_map_student_test_*.html",
+        "07_visualisations/plots/model4_route_reconstruction_panel.png"
+      ]
+    },
+    "08_fastapi_backend_and_09_ui": {
+      "status": "completed",
+      "artifacts": [
+        "08_api/inference_engine.py",
+        "08_api/main.py",
+        "09_ui/index.html",
+        "09_ui/style.css",
+        "09_ui/app.js"
+      ]
+    },
+    "10_deployment_and_e2e_test": {
+      "status": "completed",
+      "artifacts": [
+        "10_deployment/.env.example",
+        "10_deployment/start_api_laptop1.sh",
+        "10_deployment/start_ui_laptop2.sh",
+        "10_deployment/test_api_e2e.py",
+        "results/api_e2e_verification.json"
+      ]
+    },
+    "11_technical_report_pdf": {
+      "status": "completed",
+      "artifacts": [
+        "report/generate_report_pdf.py",
+        "report/PathSnap_Model4_NNGLS_RLCD_Report.pdf"
+      ]
+    },
+    "12_theory_and_viva_prep": {
+      "status": "completed",
+      "artifacts": [
+        "theory_and_viva/01_NN_GLS_Theory.md",
+        "theory_and_viva/02_RLCD_Theory.md",
+        "theory_and_viva/03_Synergy_NNGLS_plus_RLCD_Architecture.md",
+        "theory_and_viva/04_Viva_QA_Master_Prep.md"
+      ]
+    }
   },
-  "metrics_summary": {}
+  "metrics_summary": {
+    "naive_nearest_arc_student_test_top1": 0.5471,
+    "candidate_miss_rate_student_test": 0.0017,
+    "model4_cv_5fold_macro_f1_mean": 0.92036,
+    "model4_cv_5fold_macro_f1_std": 0.05251,
+    "model4_student_test_top1_accuracy": 0.91503,
+    "model4_student_test_macro_f1": 0.95297,
+    "model4_student_test_route_continuity": 0.99242,
+    "model4_student_test_route_continuity_1hop": 0.96614,
+    "model4_student_test_seq_arc_f1": 0.92151,
+    "model4_student_test_log_loss": 0.26040,
+    "model4_student_test_brier_score": 0.12301,
+    "model4_student_test_ece": 0.03513,
+    "model4_inference_ms_per_trip": 39.33
+  }
 }

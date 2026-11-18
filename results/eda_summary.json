@@ -1,0 +1,79 @@
+{
+  "train": {
+    "n_trips": 80,
+    "total_gps_observations": 208417,
+    "gps_per_trip_min_med_max": [
+      361,
+      1529.0,
+      19313
+    ],
+    "nodes_min_med_max": [
+      299,
+      9608.0,
+      155003
+    ],
+    "arcs_min_med_max": [
+      649,
+      19526.5,
+      307392
+    ],
+    "route_arcs_min_med_max": [
+      59,
+      280.0,
+      2266
+    ],
+    "mean_bidir_edge_frac": 0.9216,
+    "total_zero_len_arcs": 100,
+    "total_isolated_nodes": 0,
+    "max_connected_components": 421,
+    "total_route_directed_breaks": 13,
+    "trips_with_revisited_arcs": 9,
+    "max_time_gap_s": 153064.0,
+    "trips_with_gap_gt5s": 45,
+    "median_of_trip_gps_dist_m": 4.51,
+    "max_gps_dist_m": 569.73,
+    "high_noise_trips_med_gt25m": [
+      "00000033",
+      "00000054"
+    ],
+    "missing_values_count": 0,
+    "missing_files_count": 0
+  },
+  "student_test": {
+    "n_trips": 10,
+    "total_gps_observations": 19160,
+    "gps_per_trip_min_med_max": [
+      262,
+      1420.0,
+      3958
+    ],
+    "nodes_min_med_max": [
+      1770,
+      6596.5,
+      26635
+    ],
+    "arcs_min_med_max": [
+      3577,
+      13145.0,
+      56027
+    ],
+    "route_arcs_min_med_max": [
+      95,
+      250.0,
+      1323
+    ],
+    "mean_bidir_edge_frac": 0.9269,
+    "total_zero_len_arcs": 6,
+    "total_isolated_nodes": 0,
+    "max_connected_components": 100,
+    "total_route_directed_breaks": 1,
+    "trips_with_revisited_arcs": 1,
+    "max_time_gap_s": 210.0,
+    "trips_with_gap_gt5s": 2,
+    "median_of_trip_gps_dist_m": 4.59,
+    "max_gps_dist_m": 105.95,
+    "high_noise_trips_med_gt25m": [],
+    "missing_values_count": 0,
+    "missing_files_count": 0
+  }
+}

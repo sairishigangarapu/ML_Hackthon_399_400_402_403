@@ -1,0 +1,61 @@
+{
+  "model_name": "Model 4: NN-GLS + RLCD",
+  "algorithm_family": "Geostatistical Graph Neural Network (NN-GLS) + Calibrated Policy-Gradient RL (RLCD)",
+  "architecture": {
+    "hidden_dim": 128,
+    "num_layers": 2,
+    "num_heads": 4,
+    "dropout": 0.15,
+    "window_len": 48,
+    "train_stride": 24,
+    "eval_window_len": 64,
+    "eval_stride": 32
+  },
+  "nngp": {
+    "m_neighbors": 5,
+    "rho_spatial_m": 45.0,
+    "rho_temporal_s": 6.0,
+    "sigma2": 0.85,
+    "tau2": 0.15,
+    "gap_threshold_s": 5.0,
+    "krige_strength": 0.22
+  },
+  "stage1_nngls": {
+    "epochs": 20,
+    "lr": 0.0013,
+    "weight_decay": 0.00015,
+    "ce_weight": 0.6,
+    "batch_size": 128,
+    "max_windows_per_trip": 140,
+    "patience": 5
+  },
+  "stage2_rlcd": {
+    "epochs": 12,
+    "lr": 0.00035,
+    "weight_decay": 0.0001,
+    "batch_size": 128,
+    "max_windows_per_trip": 140,
+    "patience": 5,
+    "group_size": 8,
+    "w_brier_reward": 1.25,
+    "w_cont_reward": 0.55,
+    "w_hit_reward": 0.2,
+    "pg_weight": 0.18,
+    "brier_direct_weight": 1.6,
+    "log_score_weight": 1.0,
+    "soft_ece_weight": 1.5,
+    "kl_anchor_weight": 0.15,
+    "entropy_bonus": 0.002,
+    "n_ece_bins": 10
+  },
+  "random_seed": 42,
+  "cv_folds": 5,
+  "in_features": 28,
+  "n_parameters": 419075,
+  "learned_temperature": 0.96275,
+  "refit_epochs": {
+    "stage1_nngls": 12,
+    "stage2_rlcd": 8
+  },
+  "final_train_sec": 196.43
+}

@@ -1,34 +1,67 @@
-# PathSnap: Distributed Map-Matching & Route Reconstruction
+# PathSnap: Distributed Map-Matching & Route Reconstruction — Model 4 (NN-GLS + RLCD)
 
-**PES University — UE24CS352A: Machine Learning Hackathon (Team 399_400_402_403)**
+**PES University — UE24CS352A: Machine Learning Hackathon | Team 399_400_402_403**
 
-PathSnap reconstructs realistic, topologically valid vehicle trajectories from noisy GPS observations onto directed road networks using multi-family machine learning, **Bayesian Hyperparameter Optimisation**, **HMM + Viterbi decoding**, **NN-GLS (Neural Networks with Generalized Least Squares)**, and **RLCD (Reinforcement Learning for Calibrated Decisions)**, deployed across a two-laptop **FastAPI + OpenStreetMap/Leaflet** architecture.
+This repository implements **Model 4 (`NN-GLS + RLCD`)** — a pure end-to-end **Geostatistical Graph Neural Network + Calibrated Reinforcement Learning** map-matching system (zero HMM/Viterbi dependency) paired with a two-laptop **FastAPI + Leaflet/OpenStreetMap (free tier)** deployment architecture.
 
-## Repository Structure (Deliverable Order)
+### Team Division of Labor (4 Members)
+- **Model 1** — HMM + Viterbi + Bayesian Hyperparameter Optimisation *(Teammate 1)*
+- **Model 2** — Standalone RLCD *(Teammate 2)*
+- **Model 3** — Standalone NN-GLS *(Teammate 3)*
+- **Model 4 (This Implementation)** — **Hybrid NN-GLS + RLCD** *(Zhan & Datta Vecchia/NNGP spatial covariance whitening + Kriging-Graph layers + GRPO strictly proper Brier & directed road-continuity RLCD post-training)*
 
-| Directory | Purpose |
+---
+
+## Ordered Directory Structure (Deliverable-Aligned)
+
+| Folder | Contents |
 |---|---|
-| [`agents/`](agents/) | Multi-session agent tracking, machine-readable checkpoints (`CHECKPOINT.json`), `STATE.md`, and architectural `DECISIONS.md` |
-| [`01_data_processing/`](01_data_processing/) | Raw `.track`/`.nodes`/`.arcs`/`.route` parsers, validation, local Azimuthal Equidistant (AEQD) projection, and EDA |
-| [`02_feature_engineering/`](02_feature_engineering/) | Spatial KD-tree candidate generation, monotonic DP ground-truth alignment, and 28 spatial/kinematic/topological features |
-| [`03_model_training/`](03_model_training/) | Training pipelines for 8 models: Logistic Regression, Random Forest, LightGBM, MLP-BCE, **Model 1 (Bayesian-Opt LightGBM + HMM)**, **Model 2 (RLCD)**, **Model 3 (NN-GLS)**, **Model 4 (NN-GLS + RLCD)** |
-| [`04_hyperparameter_optimisation/`](04_hyperparameter_optimisation/) | Optuna TPE Bayesian optimisation over 5-fold `GroupKFold(trip_id)` CV (classifier + HMM parameters) |
-| [`05_hmm_viterbi/`](05_hmm_viterbi/) | Log-domain HMM + Viterbi decoder with bounded Dijkstra road-network distances and GPS-gap handling |
-| [`06_model_evaluation/`](06_model_evaluation/) | Unified evaluation suite, calibration analysis (ECE/Brier/Log-Loss), confusion matrices, and comparison charts |
-| [`07_visualisations/`](07_visualisations/) | Interactive **Folium (OpenStreetMap free tiles)** maps (`maps/`) and diagnostic figures (`plots/`) |
-| [`08_api/`](08_api/) | **FastAPI** backend (Laptop 1) with live inference logging and strict server-side ground-truth isolation |
-| [`09_ui/`](09_ui/) | Evaluator-facing Web UI (Laptop 2) using **Leaflet.js + OpenStreetMap** free tile tier |
-| [`10_deployment/`](10_deployment/) | Two-laptop launch scripts, `.env.example`, and end-to-end API verification tests |
-| [`artifacts/`](artifacts/) | Saved trained model weights, feature scalers, HMM parameters, and inference schema |
-| [`results/`](results/) | Experimental CSVs, JSON metrics, HPO trial logs, and summary tables |
-| [`report/`](report/) | Consolidated Technical Report (`PathSnap_Technical_Report.pdf`) |
-| [`theory_and_viva/`](theory_and_viva/) | Deep mathematical theory notes and structured Viva Q&A preparation |
+| [`agents/`](agents/) | Multi-session continuation blueprint (`AGENTS.md`), `HANDOFF_PROTOCOL.md`, live `STATE.md`, `CHECKPOINT.json`, and `DECISIONS.md` |
+| [`01_data_processing/`](01_data_processing/) | Raw `.track`/`.nodes`/`.arcs`/`.route` I/O, WGS-84 local Azimuthal Equidistant (AEQD) projection, validation & full EDA |
+| [`02_feature_engineering/`](02_feature_engineering/) | Subdivided-arc `cKDTree` Top-10 candidate generator (0.17% test miss rate), monotonic DP reference alignment, and 28 domain features |
+| [`03_model_training/`](03_model_training/) | Pure Model 4 implementation: `nngls_core.py` (Vecchia/NNGP whitening + Kriging-Graph layers), `rlcd_core.py` (GRPO Brier + continuity + Soft-ECE + KL anchor), and 5-fold `GroupKFold(trip_id)` trainer `train_model4_nngls_rlcd.py` |
+| [`04_hyperparameter_optimisation/`](04_hyperparameter_optimisation/) | Reserved in team directory layout for Model 1 (Teammate 1) |
+| [`05_hmm_viterbi/`](05_hmm_viterbi/) | Reserved in team directory layout for Model 1 (Teammate 1) |
+| [`06_model_evaluation/`](06_model_evaluation/) | Self-contained metrics (`metrics.py`: Top-1 Acc, Macro F1, Route Continuity, Seq Arc F1, Log-Loss, Brier, ECE, Confusion Matrix) & publication-grade plot generator (`generate_eval_plots.py`) |
+| [`07_visualisations/`](07_visualisations/) | Interactive **Folium OpenStreetMap (free tier)** maps (`maps/`) and diagnostic figures (`plots/`) |
+| [`08_api/`](08_api/) | **FastAPI** backend (Laptop 1) with live CMD inference logging and strict server-side ground-truth isolation (`load_route=False` during inference) |
+| [`09_ui/`](09_ui/) | Evaluator Web UI (Laptop 2) using **Leaflet.js + OpenStreetMap free public tile tier** (zero paid API keys) |
+| [`10_deployment/`](10_deployment/) | Two-laptop launch scripts (`start_api_laptop1.sh`, `start_ui_laptop2.sh`), `.env.example`, and automated 10-trip E2E verification (`test_api_e2e.py`) |
+| [`artifacts/`](artifacts/) | Saved `model4_nngls_rlcd.pt` weights, `scaler_model4_nngls_rlcd.json`, `feature_schema.json`, and `model4_nngls_rlcd_config.json` |
+| [`results/`](results/) | Complete experimental CSVs, JSON summaries, CV fold logs, epoch histories, and API E2E verification logs |
+| [`report/`](report/) | Consolidated Technical Report PDF (`PathSnap_Model4_NNGLS_RLCD_Report.pdf`) and generator script |
+| [`theory_and_viva/`](theory_and_viva/) | Deep mathematical explanations of NN-GLS, RLCD, their synergy, and 24+ Viva Q&As |
 
-## Quick Setup
+---
+
+## Quick Start & Execution
+
+### 1. Environment Setup
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-See [`AGENTS.md`](AGENTS.md) for the complete technical context and session continuation guide.
+### 2. Run Complete Pipeline (Reproducible, Seed = 42)
+```bash
+python 01_data_processing/run_eda.py
+python 02_feature_engineering/feature_extractor.py
+python 03_model_training/train_model4_nngls_rlcd.py
+python 06_model_evaluation/generate_eval_plots.py
+python 07_visualisations/generate_folium_maps.py
+python 10_deployment/test_api_e2e.py
+python report/generate_report_pdf.py
+```
+
+### 3. Two-Laptop Deployment
+- **Laptop 1 (Model & FastAPI Backend):**
+  ```bash
+  # For final evaluation, point PATHSNAP_EVAL_DIR to the 10 reserved evaluator trips:
+  PATHSNAP_EVAL_DIR="/path/to/evaluator_test" ./10_deployment/start_api_laptop1.sh
+  ```
+- **Laptop 2 (Evaluator Web UI — OpenStreetMap Free Tier):**
+  ```bash
+  ./10_deployment/start_ui_laptop2.sh
+  # Open http://localhost:3000 and set API URL to http://<LAPTOP_1_LAN_IP>:8000
+  ```
