@@ -1,0 +1,9 @@
+# Minimum packages needed for the data pipeline + Logistic Regression (Python 3.13, Windows).
+# Add the remaining packages from requirements.txt as each stage is implemented.
+numpy
+pandas
+scipy
+scikit-learn
+pyproj
+matplotlib
+joblib
