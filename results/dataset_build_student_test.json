@@ -1,0 +1,125 @@
+{
+  "partition": "student_test",
+  "K": 16,
+  "label_cap_m": 300.0,
+  "n_trips": 10,
+  "n_obs": 19160,
+  "n_obs_label_valid": 19160,
+  "n_obs_label_invalid": 0,
+  "n_rows": 288028,
+  "candidate_miss_rate_valid_obs": 0.0007306889352818313,
+  "n_features": 18,
+  "feature_names": [
+    "dist_m",
+    "rank",
+    "dist_gap_m",
+    "dist_ratio",
+    "log_arc_len",
+    "proj_frac",
+    "log_dist_to_arc_end",
+    "is_zero_len",
+    "cos_h3",
+    "sin_h3",
+    "defined_h3",
+    "cos_h10",
+    "sin_h10",
+    "defined_h10",
+    "has_twin",
+    "cos_h3_x_twin",
+    "cos_h10_x_twin",
+    "speed_3s_mps"
+  ],
+  "build_seconds": 3.09,
+  "per_trip": [
+    {
+      "trip": 0,
+      "n_obs": 2503,
+      "n_label_valid": 2503,
+      "miss_rate": 0.0007990411506192396,
+      "n_nonmonotone": 0,
+      "n_back_moves": 147,
+      "seconds": 0.256
+    },
+    {
+      "trip": 7,
+      "n_obs": 1354,
+      "n_label_valid": 1354,
+      "miss_rate": 0.0,
+      "n_nonmonotone": 0,
+      "n_back_moves": 145,
+      "seconds": 0.206
+    },
+    {
+      "trip": 9,
+      "n_obs": 1049,
+      "n_label_valid": 1049,
+      "miss_rate": 0.0009532888465204614,
+      "n_nonmonotone": 0,
+      "n_back_moves": 856,
+      "seconds": 0.184
+    },
+    {
+      "trip": 40,
+      "n_obs": 2995,
+      "n_label_valid": 2995,
+      "miss_rate": 0.0,
+      "n_nonmonotone": 0,
+      "n_back_moves": 1112,
+      "seconds": 0.338
+    },
+    {
+      "trip": 52,
+      "n_obs": 262,
+      "n_label_valid": 262,
+      "miss_rate": 0.0,
+      "n_nonmonotone": 0,
+      "n_back_moves": 385,
+      "seconds": 0.113
+    },
+    {
+      "trip": 56,
+      "n_obs": 3958,
+      "n_label_valid": 3958,
+      "miss_rate": 0.002526528549772644,
+      "n_nonmonotone": 0,
+      "n_back_moves": 92668,
+      "seconds": 0.686
+    },
+    {
+      "trip": 65,
+      "n_obs": 768,
+      "n_label_valid": 768,
+      "miss_rate": 0.0,
+      "n_nonmonotone": 0,
+      "n_back_moves": 478,
+      "seconds": 0.207
+    },
+    {
+      "trip": 76,
+      "n_obs": 1486,
+      "n_label_valid": 1486,
+      "miss_rate": 0.0006729475100941684,
+      "n_nonmonotone": 0,
+      "n_back_moves": 21,
+      "seconds": 0.318
+    },
+    {
+      "trip": 77,
+      "n_obs": 3911,
+      "n_label_valid": 3911,
+      "miss_rate": 0.0,
+      "n_nonmonotone": 0,
+      "n_back_moves": 11628,
+      "seconds": 0.404
+    },
+    {
+      "trip": 91,
+      "n_obs": 874,
+      "n_label_valid": 874,
+      "miss_rate": 0.0,
+      "n_nonmonotone": 0,
+      "n_back_moves": 417,
+      "seconds": 0.308
+    }
+  ]
+}
