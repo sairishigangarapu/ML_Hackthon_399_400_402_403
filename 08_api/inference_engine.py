@@ -39,7 +39,7 @@ from rlcd_core import precompute_step_connectivity_trip
 from train_utils import apply_feature_scaler, predict_trip_logits_sliding
 
 sys.path.insert(0, str(ROOT / "06_model_evaluation"))
-from metrics import (
+from metrics_model4 import (
     ShortestPathEvaluator,
     collapse_predicted_route_arcs,
     evaluate_predictions,

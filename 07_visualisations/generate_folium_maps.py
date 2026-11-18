@@ -27,7 +27,7 @@ from config import DIR_MAPS, DIR_PLOTS, DIR_RESULTS, STUDENT_TEST_DIR
 from io_utils import TripData, build_adjacency, load_trip
 
 sys.path.insert(0, str(ROOT / "06_model_evaluation"))
-from metrics import ShortestPathEvaluator, collapse_predicted_route_arcs
+from metrics_model4 import ShortestPathEvaluator, collapse_predicted_route_arcs
 
 
 def build_route_comparison_folium_map(

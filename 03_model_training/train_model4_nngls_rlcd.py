@@ -62,7 +62,7 @@ from train_utils import (
 )
 
 sys.path.insert(0, str(ROOT / "06_model_evaluation"))
-from metrics import ShortestPathEvaluator, evaluate_predictions
+from metrics_model4 import ShortestPathEvaluator, evaluate_predictions
 
 
 # Model 4: NN-GLS + RLCD theoretically grounded configuration

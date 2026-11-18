@@ -333,7 +333,7 @@ def main() -> None:
         "candidate_radius_m": CANDIDATE_RADIUS_M,
         "gap_threshold_s": GAP_THRESHOLD_S,
     }
-    with open(DIR_ARTIFACTS / "feature_schema.json", "w") as f:
+    with open(DIR_ARTIFACTS / "feature_schema_model4.json", "w") as f:
         json.dump(schema, f, indent=2)
 
     train_sum = build_partition_dataset("train", TRAIN_DIR)
